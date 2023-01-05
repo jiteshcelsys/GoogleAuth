@@ -4,31 +4,31 @@ import 'froala-editor/css/froala_style.min.css';
 import 'froala-editor/css/froala_editor.pkgd.min.css';
 import ReactHtmlParse from 'html-react-parser';
 import Comments from "./Comments";
+import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 const Post = () => {
+  const dispatch = useDispatch();
+  let string1= useSelector((state)=>{return state});
+  let comment = useSelector((state)=>{return state.comment});
+  let messageArray = useSelector((state)=>{return state.messageArray});
+
+
+
   const [string, setString] = useState("");
   const [input, setInput] = useState([]);
-  const [CommentCounter, setCommentRender] = useState(0);
-
-  // const [Comment, setComment] = useState("");
-  // const [CommentD, setCommentDisplay] = useState([]);
-  // console.log(input);
-  // console.log(parse);
-
   const onsubmit = () => {
+    dispatch({type:'messageArray',payload:string})
     setInput([...input, string]);
     setString("");
-  }
+    console.log(messageArray);
 
-  // const submitComment = () => {
-  //   setCommentDisplay([...CommentD, Comment])
-  //   setComment('');
-  // }
+  }
 
   return (
     <>
       <div id="froala-editor">
-        <FroalaEditor tag="textarea" onModelChange={(e) => { setString(e) }}
+        <FroalaEditor tag="textarea" onModelChange={(e) =>  {setString(e)}}
           model={string} />
       </div>
       <button onClick={() => {
@@ -38,12 +38,10 @@ const Post = () => {
         {input ?
           input.map((value, index) => {
             return (
-              <div className="boxInput">
-                {ReactHtmlParse(`       <h3 className="boxGap" key=${index}>${value}
+              <div className="boxInput" key={index}>
+                {ReactHtmlParse(`<h3 className="boxGap" >${value}
                   </h3>`)}
-                <button onClick={() => { setCommentRender(CommentCounter + 1); }} onDoubleClick={() => { setCommentRender(0) }}>Comment</button>
-                { /*If the value of commentCounter is increased the only the next part will render*/}
-                {CommentCounter ? <Comments /> : null}
+                <button >Comment</button>
               </div>
             )
           })

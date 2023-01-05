@@ -9,7 +9,7 @@ function Logout() {
     // const cookies = document.cookie.split(";");
     document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     console.log('Logout Successfully');
-    history.push('/hompage');
+    history.push('/about');
   }
   return(
     <div id='signOutButton'>

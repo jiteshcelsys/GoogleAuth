@@ -8,7 +8,6 @@ const Comments =() =>{
     setCommentDisplay([...CommentD, Comment])
     setComment('');
   }
-  
 
   return(
     <>

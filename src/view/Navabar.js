@@ -3,7 +3,7 @@ import Logout from '../view/Logout';
 import {gapi} from 'gapi-script';
 import { useEffect } from 'react';
 import {useNavigate} from 'react-router-dom';
-import Response from './Response_googel';
+// import Response from './Response_googel';
 const clientId ="357269047469-1s8ov95css793fukubt1s78hf8teq40k.apps.googleusercontent.com";
 
 const Navabar = () =>{

@@ -1,11 +1,6 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import reducers from "./postslice";
-const reducer = combineReducers({
-  reducers
-})
+import { createStore,combineReducers, applyMiddleware} from 'redux';
+import reducer from './reducer';
+import thunk from 'redux-thunk';
 
-const store = configureStore({
-  reducer : reducer
-
-})
+const store= createStore(reducer,applyMiddleware(thunk));
 export default store;
