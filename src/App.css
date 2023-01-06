@@ -57,13 +57,15 @@ align-content:  center;
 .boxInput{
   margin: 4px;
   height: 5.3rem;
-  width: 40%;
+  width: 30%;
   background-color: aquamarine;
-  display: flex;
+  display: inline-block;
   overflow-y: auto;
+  overflow-x: auto;
   justify-content: center;
   align-items: center;
 }
+
 
 
 @keyframes App-logo-spin {

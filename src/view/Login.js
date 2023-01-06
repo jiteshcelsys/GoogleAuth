@@ -20,7 +20,7 @@ function Login(){
     dispatch({type:'Image',payload:res.profileObj.imageUrl});
     console.log(name);
     console.log(imageUrl);
-    // history.push('/post');
+    history.push('/post');
  
   }
 

@@ -1,12 +1,15 @@
 const intialState = {
   name: "",
   img: "",
+  // data: [],
   message: "", messageArray: [],
   comment: "", commentArray: [],
 }
 
 function reducer(state = intialState, action) {
+  
   switch (action.type) {
+  
     case 'UserDetails':
       return {
         ...state,
@@ -19,10 +22,18 @@ function reducer(state = intialState, action) {
 
       };
     case 'messageArray': {
-      console.log(state);
+      console.log(typeof (state.messageArray))
+      console.log(state.messageArray)
       return {
         ...state,
-        messageArray: state.messageArray.push(action.payload)
+        messageArray: [...state.messageArray, action.payload]
+      }
+    }
+    case 'commentArray': {
+
+      return {
+        ...state,
+        commentArray: [...state.commentArray, action.payload]
       }
     }
     default: return state;

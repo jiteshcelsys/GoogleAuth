@@ -12,7 +12,7 @@ function App() {
       <Router>
         <Switch>
           <Route path='/post'>{<Post />}</Route >
-          <Route path='/'>{<Navabar />}</Route>
+          <Route path='/about'>{<Navabar />}</Route>
         </Switch>
       </Router>
     </div>
