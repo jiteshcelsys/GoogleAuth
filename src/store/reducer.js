@@ -1,15 +1,14 @@
 const intialState = {
   name: "",
   img: "",
-  // data: [],
   message: "", messageArray: [],
-  comment: "", commentArray: [],
+ 
 }
 
 function reducer(state = intialState, action) {
-  
+
   switch (action.type) {
-  
+
     case 'UserDetails':
       return {
         ...state,
@@ -19,21 +18,38 @@ function reducer(state = intialState, action) {
       return {
         ...state,
         img: action.payload
-
       };
+      
     case 'messageArray': {
-      console.log(typeof (state.messageArray))
-      console.log(state.messageArray)
       return {
         ...state,
-        messageArray: [...state.messageArray, action.payload]
+        messageArray: [...state.messageArray,
+        {
+          user: action.payload.string,
+          comment: [],
+          count:0
+        }]
       }
     }
-    case 'commentArray': {
 
+    case 'commentArray': {
+      let updatedMessageArray = state.messageArray.map((x) => (
+        (x.user === action.payload.user) ? { ...x, comment: [...x.comment, action.payload.comment] } : x
+      ));
+      console.log(updatedMessageArray);
       return {
         ...state,
-        commentArray: [...state.commentArray, action.payload]
+        messageArray: updatedMessageArray
+      }
+    }
+    case 'Like' :{
+      let updateCount = state.messageArray.map((x) => (
+        (x.user === action.payload.user) ? { ...x, count:action.payload.count } : x
+      ));
+      console.log(updateCount)
+      return{
+        ...state,
+        count: updateCount
       }
     }
     default: return state;

@@ -8,19 +8,19 @@ const clientId ="357269047469-1s8ov95css793fukubt1s78hf8teq40k.apps.googleuserco
 
 
 function Login(){ 
+
   const name= useSelector((state)=>{return state.name});
   const imageUrl = useSelector((state)=>{return state.img})
   const dispatch = useDispatch();
  
- const history  =  useHistory();
+//  const history  =  useHistory();
 
   const onSuccess = (res) =>{
     console.log(res.profileObj);
     dispatch({type:'UserDetails',payload:res.profileObj.name})
     dispatch({type:'Image',payload:res.profileObj.imageUrl});
-    console.log(name);
-    console.log(imageUrl);
-    history.push('/post');
+    console.log(res.profileObj.imageUrl);
+    // history.push('/post');
  
   }
 
@@ -30,8 +30,10 @@ function Login(){
   }
   return(
    <>
-   <Response props={name} img={imageUrl}/>
+   {/* <Response props={name} img={imageUrl}/> */}
     <div id='signInButton'>
+    <img src={imageUrl} alt='pic' width='13px' height ='13px' />
+    <span>{name}</span>
     
      <GoogleLogin
      

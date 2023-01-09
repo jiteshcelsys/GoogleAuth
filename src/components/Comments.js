@@ -21,7 +21,6 @@ const Comments =() =>{
     {commentD.map((value,index)=>{
       return(
       <li key={index}>{value}</li>
-
       )
     })}
 
