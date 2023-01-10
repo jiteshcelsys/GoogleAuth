@@ -1,19 +1,24 @@
 import './App.css';
 import Navabar from './view/Navabar';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Route, Routes,  } from 'react-router-dom'
 import Post from './components/Post.js'
+import { useSelector } from 'react-redux';
 
 
 function App() {
+  const name= useSelector((state)=>{return state.name});
+  
 
   return (
     <div className="App">
       <Navabar />
       <Router>
-        <Switch>
-          <Route path='/post'>{<Post />}</Route >
-          <Route path='/about'>{<Navabar />}</Route>
-        </Switch>
+        <Routes>
+
+          <Route path='/post' element={<Post />}></Route >
+          <Route path='/'element={name?<Navigate replace to='/post'/>: null }/>
+         
+        </Routes>
       </Router>
     </div>
   );

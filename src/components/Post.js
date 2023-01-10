@@ -4,6 +4,7 @@ import 'froala-editor/css/froala_style.min.css';
 import 'froala-editor/css/froala_editor.pkgd.min.css';
 import ReactHtmlParse from 'html-react-parser';
 import { useDispatch, useSelector } from "react-redux";
+import TitleComponent from "../view/TitleComponent";
 
 
 const Post = () => {
@@ -70,33 +71,38 @@ console.log(string);
         onsubmit()
       }}>Submit</button>
       <div >
+
         {(messageArray)?
           messageArray.map((value, index) => {
-            return (
-              <div className="boxInput" key={index}>
-                <img src={imageurl} alt='pic' width='13px' height='13px'/>
-                <h4>--{name}</h4>
-                {ReactHtmlParse(`<h3 className="boxGap" >${value.user}
-                  </h3>`)}
-                <button onClick={(index)=>{CommentButton(index)}} onDoubleClick={() => { setCounter(0) }}>Comment</button>
-                <button onClick={()=>{LikeButton(value.user,index)}}>Like<span >{value.count}</span>
-               </button>
-                {counter? <>
-                <input type='text' onChange={(e)=>{setComment(e.target.value)}} value={comment}/>
-                <button onClick={()=>{AddComment(value.user)}}>addComment</button>
-                {value.comment.map((value,index)=>{
-                  return(
-                    <>
-                    <li key = {value.toString()}>{value}</li>
-                    </>
-                  )
-                })}
-                </>
-                  : null}
-              </div>
-            )
-          })
-          : null}
+            return(
+              <div className="boxInput">
+            <TitleComponent title= {value} />
+            </div>
+            )}):null}
+          {/* //   return (
+          //     <div className="boxInput" key={index}>
+          //       <img src={imageurl} alt='pic' width='13px' height='13px'/>
+          //       <h4>--{name}</h4>
+          //       {ReactHtmlParse(`<h3 className="boxGap" >${value.user}
+          //         </h3>`)}
+          //       <button onClick={(index)=>{CommentButton(index)}} onDoubleClick={() => { setCounter(0) }}>Comment</button>
+          //       <button onClick={()=>{LikeButton(value.user,index)}}>Like<span >{value.count}</span>
+          //      </button>
+          //       {counter? <>
+          //       <input type='text' onChange={(e)=>{setComment(e.target.value)}} value={comment}/>
+          //       <button onClick={()=>{AddComment(value.user)}}>addComment</button>
+          //       {value.comment.map((value,index)=>{
+          //         return(
+          //           <>
+          //           <li key = {value.toString()}>{value}</li>
+          //           </>
+          //         )
+          //       })}
+          //       </>
+          //         : null}
+          //     </div>
+          //   )
+          // }) */}
         <div>
         </div>
       </div>

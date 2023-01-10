@@ -6,22 +6,21 @@ import { useHistory } from 'react-router-dom'
 import Response from '../components/Response_googel';
 const clientId ="357269047469-1s8ov95css793fukubt1s78hf8teq40k.apps.googleusercontent.com";
 
-
 function Login(){ 
+  
 
   const name= useSelector((state)=>{return state.name});
   const imageUrl = useSelector((state)=>{return state.img})
   const dispatch = useDispatch();
  
-//  const history  =  useHistory();
-
   const onSuccess = (res) =>{
+    
     console.log(res.profileObj);
     dispatch({type:'UserDetails',payload:res.profileObj.name})
     dispatch({type:'Image',payload:res.profileObj.imageUrl});
     console.log(res.profileObj.imageUrl);
-    // history.push('/post');
- 
+   
+
   }
 
   const onFailure = (res) =>{
@@ -30,7 +29,6 @@ function Login(){
   }
   return(
    <>
-   {/* <Response props={name} img={imageUrl}/> */}
     <div id='signInButton'>
     <img src={imageUrl} alt='pic' width='13px' height ='13px' />
     <span>{name}</span>
