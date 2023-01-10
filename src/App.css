@@ -75,13 +75,22 @@ align-content:  center;
 }
 
 .CommentBtn{
+  padding: 5px 15px;
+  font-size: 14px;
   text-align: right;
-  border-radius: 10px;
-  color:black
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px #999;
+  margin: 10px;
 }
-.CommentBtn:hover{
-  color: blue;
-  background-color: #61dafb;
+.CommentBtn:active{
+  background-color: #f00404;
+  box-shadow:  rgb(49, 41, 41);
+  transform: translateY(2px);
 }
 .ListComment{
   display: flex;

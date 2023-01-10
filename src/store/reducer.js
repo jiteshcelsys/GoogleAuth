@@ -43,14 +43,15 @@ function reducer(state = intialState, action) {
       }
     }
     case 'Like' :{
-      let updateCount = state.messageArray.map((value) => (
+      let updatedMessageArray = state.messageArray.map((value) => (
         (value.user === action.payload.user) ? { ...value, 
           count: action.payload.count} : value
       ));
-      console.log(updateCount)
+      // console.log(updateCount)
+      console.log(state.messageArray);
       return{
         ...state,
-        count: updateCount
+        messageArray: updatedMessageArray
       }
     }
     default: return state;

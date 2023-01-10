@@ -11,12 +11,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navabar />
+    
       <Router>
         <Routes>
 
           <Route path='/post' element={<Post />}></Route >
-          <Route path='/'element={name?<Navigate replace to='/post'/>: null }/>
+          <Route path='/'element={name?<Navigate replace to='/post'/>:   <Navabar /> }/>
          
         </Routes>
       </Router>
