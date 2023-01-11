@@ -2,43 +2,43 @@ import React, { useEffect, useState } from 'react'
 import CommentComp from './CommentComp';
 import ReactHtmlParse from 'html-react-parser';
 import { useDispatch, useSelector } from 'react-redux';
-import Post from '../components/Post';
-import { useCallback } from 'react';
+
 
 function TitleComponent({ title }) {
+
   const dispatch = useDispatch();
+  const name= useSelector((state)=>{return state.name});
+  const imageUrl = useSelector((state) => { return state.img })
   let messageArray = useSelector((state) => { return state.messageArray });
   const [comment, setcomment] = useState('');
   const submitForm = (e) => {
     e.preventDefault();
     const user = title.user
+   if(comment){
     dispatch({ type: 'commentArray', payload: { user, comment } });
     setcomment('');
+   }
+   else{
+    alert('Enter the Comment')
+   }
   }
-  //  function LikeButton(user, count) {
-  //   dispatch({ type: 'Like', payload: { user, count } });
-  //   console.log(user)
-  // console.log(messageArray);
-  //   console.log(title.count);
-  //   return title.count
-  // }
-  
-  
-  const LikeButton =(user, count)=>{
+
+  function LikeButton (user, count){
     dispatch({ type: 'Like', payload: { user, count } });
     console.log(user)
-  console.log(messageArray);
     console.log(title.count);
-    return title.count
+    console.log(messageArray);
   }
-  console.log('child'+title.count);
-
   return (
     <>
-      {ReactHtmlParse(`<h3 className="boxGap" >${title.user}
+ 
+      <div className='wrapp'>
+        <h5><img src={imageUrl} height='15px' width ='20px' alt='pic'/>-{name} </h5>
+      {ReactHtmlParse(`<h3  >${title.user}
       </h3>`)}
-      <button onClick={() =>  LikeButton(title.user, title.count++) 
+      <button onClick={() => { LikeButton(title.user, title.count+1) }
        }>Like</button> {title.count}
+
       <form onSubmit={(e) => { submitForm(e) }} >
         <input type='text' onChange={(e) => { setcomment(e.target.value) }} value={comment} />
         <button className='CommentBtn'>Comment</button>
@@ -50,6 +50,9 @@ function TitleComponent({ title }) {
           </>
         )
       })}
+      
+    
+      </div>
     </>
   )
 }

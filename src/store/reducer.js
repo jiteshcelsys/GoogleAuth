@@ -2,6 +2,7 @@ const intialState = {
   name: "",
   img: "",
   message: "", messageArray: [],
+  counterComment:''
  
 }
 
@@ -47,13 +48,21 @@ function reducer(state = intialState, action) {
         (value.user === action.payload.user) ? { ...value, 
           count: action.payload.count} : value
       ));
-      // console.log(updateCount)
+      console.log(updatedMessageArray)
       console.log(state.messageArray);
       return{
         ...state,
+
         messageArray: updatedMessageArray
       }
     }
+    case 'CounterComment' :
+      console.log(state.counterComment)
+      return{
+        ...state,
+        
+        
+      }
     default: return state;
   }
 }

@@ -58,8 +58,8 @@ align-content:  center;
 
 .boxInput{
   margin: 4px;
-  height: 20%;
-  width:40%;
+  height: 200px;
+  width:400px;
   border-radius: 10px 10px;
   background-color: aquamarine;
   display: inline-block;
@@ -73,6 +73,8 @@ align-content:  center;
   justify-content: space-evenly;
   flex-direction: column;
 }
+
+
 
 .CommentBtn{
   padding: 5px 15px;
@@ -100,7 +102,36 @@ align-content:  center;
 .LikeBtn{
   display: flex;
   justify-content: end;
+  height: 20px;
+  width: 40px;
 }
+.wrapp{
+  text-align: center;
+}
+.PostComponent{
+width: 100%;
+height: 100%;
+}
+
+#root{
+  text-align: center;
+}
+.boxGap{
+  position: sticky;
+  top:0px
+}
+.h5_tag{
+  color: #f00404;
+}
+.LoginCenter{
+  width:100%;
+  height: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: auto;
+ }
+
 
 @keyframes App-logo-spin {
   from {
