@@ -4,7 +4,7 @@ import 'froala-editor/css/froala_style.min.css';
 import 'froala-editor/css/froala_editor.pkgd.min.css';
 import { useDispatch, useSelector } from "react-redux";
 import TitleComponent from "../view/TitleComponent";
-import Logout from "../view/Logout";
+import Navabar from "../view/Navabar";
 
 
 const Post = () => {
@@ -13,20 +13,20 @@ const Post = () => {
   let messageArray = useSelector((state) => { return state.messageArray });
 
   const onsubmit = () => {
-console.log(string);
-   if(string){
-    dispatch({ type: 'messageArray', payload: {string} })
+    console.log(string);
+    if (string) {
+      dispatch({ type: 'messageArray', payload: { string } })
+      setString("");
+      console.log(messageArray);
+    }
     setString("");
-    console.log(messageArray);
-   }
-   setString("");
   }
-  console.log(messageArray+'parent');
+  console.log(messageArray + 'parent');
   return (
     <>
-    
-    <Logout/>
-    <h1> Posts </h1>
+
+      <Navabar />
+      <h1> Posts </h1>
       <div id="froala-editor">
         <FroalaEditor tag="textarea" onModelChange={(e) => { setString(e) }}
           model={string} />
@@ -35,15 +35,16 @@ console.log(string);
         onsubmit()
       }}>Submit</button>
 
-       <div className="PostComponent" >
-       {(messageArray)?
+      <div className="PostComponent" >
+        {(messageArray) ?
           messageArray.map((value, index) => {
-            return(
+            return (
               <div className="boxInput">
-            <TitleComponent title= {value} />
-            </div>
-            )}):null}
-       </div>
+                <TitleComponent title={value} />
+              </div>
+            )
+          }) : null}
+      </div>
     </>
   )
 }

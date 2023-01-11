@@ -1,6 +1,7 @@
 const intialState = {
   name: "",
   img: "",
+  isLoggedIn:false,
   message: "", messageArray: [],
   counterComment:''
  
@@ -9,6 +10,11 @@ const intialState = {
 function reducer(state = intialState, action) {
 
   switch (action.type) {
+    case 'isLoggedIn':
+      return{
+        ...state,
+        isLoggedIn:action.payload
+      }
 
     case 'UserDetails':
       return {
@@ -66,5 +72,5 @@ function reducer(state = intialState, action) {
     default: return state;
   }
 }
-//dispatch({type:"message",payload:e.target.value}) 
+
 export default reducer
