@@ -18,10 +18,9 @@ function Login() {
     console.log(res.profileObj);
     console.log(name);
     console.log(imageUrl);
-
+    dispatch({type:'UserDetails', payload:res.profileObj.name});
+    dispatch({type:'Image', payload:res.profileObj.imageUrl})
     dispatch({ type: 'isLoggedIn', payload: true });
-    console.log('Login:true')
-    
     history('/post')
 
   }

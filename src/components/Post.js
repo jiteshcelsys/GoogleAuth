@@ -24,7 +24,6 @@ const Post = () => {
   console.log(messageArray + 'parent');
   return (
     <>
-
       <Navabar />
       <h1> Posts </h1>
       <div id="froala-editor">

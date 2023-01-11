@@ -25,14 +25,10 @@ function App() {
   return (
     <>
       <Router>
-
         <Routes>
           <Route path='/' element={<Navabar />
           } />
           <Route path='/post' element={isLoggedIn ? <Post /> : null}></Route >
-
-
-
         </Routes>
       </Router>
     </>
