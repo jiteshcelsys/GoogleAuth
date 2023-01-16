@@ -5,12 +5,25 @@ import 'froala-editor/css/froala_editor.pkgd.min.css';
 import { useDispatch, useSelector } from "react-redux";
 import TitleComponent from "../view/TitleComponent";
 import Navabar from "../view/Navabar";
+import React from "react";
 
 
 const Post = () => {
   const dispatch = useDispatch();
-  const [string, setString] = useState('');
-  let messageArray = useSelector((state) => { return state.messageArray });
+  const [string, setString] = useState<string>('');
+  interface Person {
+    name: string;
+     img: string;
+      isLoggedIn: Boolean;
+      message: string; messageArray: []; counterComment: string
+
+  }
+  type value = {
+    user:string,
+    comment:[],
+    count:number
+  }
+  let messageArray = useSelector((state:Person) => { return state.messageArray });
 
   const onsubmit = () => {
     console.log(string);
@@ -27,7 +40,7 @@ const Post = () => {
       <Navabar />
       <h1> Posts </h1>
       <div id="froala-editor">
-        <FroalaEditor tag="textarea" onModelChange={(e) => { setString(e) }}
+        <FroalaEditor tag="textarea" onModelChange={(e:any) => { setString(e) }}
           model={string} />
       </div>
       <button onClick={() => {
@@ -36,7 +49,7 @@ const Post = () => {
 
       <div className="PostComponent" >
         {(messageArray) ?
-          messageArray.map((value, index) => {
+          messageArray.map((value:value) => {
             return (
               <div className="boxInput">
                 <TitleComponent title={value} />
